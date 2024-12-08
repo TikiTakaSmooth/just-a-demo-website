@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Baby</title>
+    <style>
+        body {
+            background-color: #fdf4e3; /* Cream color */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #ff6f61; /* Soft red/pink for text */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 100px;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 1.8em;
+        }
+        button {
+            background-color: #ffd1dc; /* Soft pink */
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 1em;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 10px;
+            position: relative; /* Required for dynamic movement */
+        }
+        button:hover {
+            background-color: #ff9aa2; /* Slightly darker pink */
+        }
+        .hidden {
+            display: none;
+        }
+        .message {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        .no-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Floating cats */
+        .cat {
+            position: absolute;
+            width: 80px; /* Adjust size of cats */
+            animation: float 5s infinite;
+        }
+        .cat:nth-child(1) {
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+        .cat:nth-child(2) {
+            left: 30%;
+            top: 50%;
+            animation-delay: 2s;
+        }
+        .cat:nth-child(3) {
+            left: 70%;
+            top: 30%;
+            animation-delay: 4s;
+        }
+        .cat:nth-child(4) {
+            left: 50%;
+            top: 70%;
+            animation-delay: 6s;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Cats -->
+    <img src="C:\Cohot webdev\Week 1\cat-kitten.gif" alt="Cat 1" class="cat">
+    <img src="C:\Cohot webdev\Week 1\cute-cat.gif" alt="Cat 2" class="cat">
+    <img src="C:\Cohot webdev\Week 1\emmytesting586.gif" alt="Cat 3" class="cat">
+
+    <!-- Page 1: Verification -->
+    <div class="container" id="verification-page">
+        <h1>Are you the right person?</h1>
+        <button onclick="verify()">Yes, it's me!</button>
+    </div>
+
+    <!-- Page 2: Date Question -->
+    <div class="container hidden" id="date-page">
+        <h1>Will you go on a date with me?</h1>
+        <button id="yes-button" onclick="acceptDate()">Yes 💖</button>
+        <button id="no-button" class="no-button" onclick="moveNoButton()">No 😢</button>
+    </div>
+
+    <!-- Page 3: Declaration -->
+    <div class="container hidden" id="love-page">
+        <h1>I love you so much! 💖</h1>
+        <p>You are amazing, just the way you are! 🥰</p>
+        <p class="message">Congratulations on the date with me ! 🎉</p>
+    </div>
+
+    <script>
+        function verify() {
+            document.getElementById("verification-page").classList.add("hidden");
+            document.getElementById("date-page").classList.remove("hidden");
+        }
+
+        function moveNoButton() {
+            const button = document.getElementById("no-button");
+            const x = Math.random() * (window.innerWidth - button.offsetWidth);
+            const y = Math.random() * (window.innerHeight - button.offsetHeight);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        function acceptDate() {
+            document.getElementById("date-page").classList.add("hidden");
+            document.getElementById("love-page").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
